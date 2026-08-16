@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, PasswordField, SubmitField, validators
+from wtforms.validators import DataRequired, Length,  Email
 
 
 
@@ -20,8 +20,8 @@ This will install the packages from requirements.txt for this project.
 '''
 
 class MyForm(FlaskForm):
-    email = StringField(label='Email', validators=[DataRequired()])
-    password = PasswordField(label='Password', validators=[DataRequired()])
+    email = StringField(label='Email', validators=[DataRequired(message='Email is required.'), Email(message='That\'s not a valid email address.'), Length(min=6, max=35, message='Email must be between 6 and 35 characters long.')])
+    password = PasswordField(label='Password', validators=[DataRequired(message='Password is required.')])
     submit = SubmitField(label='Log In')
 
 app = Flask(__name__)
