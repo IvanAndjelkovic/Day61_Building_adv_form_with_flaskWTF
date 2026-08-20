@@ -3,6 +3,7 @@ from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, validators
 from wtforms.validators import DataRequired, Length,  Email
+from flask_bootstrap import Bootstrap5  # pip install bootstrap-flask
 
 
 
